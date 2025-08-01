@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "erasableSyntaxOnly": false,
+    "experimentalDecorators": true, // 启用装饰器
+    "emitDecoratorMetadata": true
+  }
+}
