@@ -11,6 +11,8 @@
   "compilerOptions": {
     "erasableSyntaxOnly": false,
     "experimentalDecorators": true, // 启用装饰器
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "target": "es2024",
+    "lib": ["es2024"]
   }
 }
