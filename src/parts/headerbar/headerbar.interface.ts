@@ -9,5 +9,6 @@ export interface IHeaderBar {
     login(): void;
     logout(): void;
     showHelpModal(): void;
+    onChangeActions: (listener: (actions: HeaderAction[]) => void) => void;
 }
 export const IHeaderBar = createDecorator<IHeaderBar>('headerBar');

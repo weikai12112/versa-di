@@ -1,4 +1,3 @@
-import { makeAutoObservable } from "mobx";
 import { DI_DEPENDENCIES } from "./createDecorator";
 
 type Factory<T = any> = (...args: any[]) => T;
@@ -9,7 +8,7 @@ export class Container {
     public singletons = new Map<any, any>();
 
     constructor(private options: { parent?: Container } = {}) {
-        const parent = options.parent;
+        const parent = this.options.parent;
         if (parent) {
             parent.providers.forEach((provider, token) => {
                 if (!this.providers.has(token)) {
@@ -75,6 +74,21 @@ export class Container {
             this.resolve(token); // 确保实例化
             return this.singletons.get(token) as T;
         };
+        return instance;
+    }
+
+    createInstance<T = any>(constructor: Class<T>, args: any[] = []): T {
+        const self = this;
+        let instance;
+        if (/^class /.test(constructor.toString())) {
+            // 通过装饰器依赖元数据自动注入，获取到依赖的装饰器函数
+            const depIds = self.getDependencies(constructor);
+            /** 初始化依赖服务并作为参数传入 */
+            const dependencies = depIds.map(depId => self.resolve(depId));
+            instance = new (constructor as Class)(...args, ...dependencies);
+        } else {
+            throw new Error(`Cannot createInstance because it is not class: ${constructor.name}`);
+        }
         return instance;
     }
 }

@@ -1,12 +1,6 @@
 import { Container } from "../../base/container";
 import { JobScheduler } from "../../base/jobScheduler";
-import { HeaderBar } from "../../parts/headerbar/headerbar";
-import { IHeaderBar } from "../../parts/headerbar/headerbar.interface";
 import { driveJobScheduler, PageLifecycle } from "./scheduler";
-import { Logger } from "../../services/logger/logger";
-import { ILogger } from "../../services/logger/logger.interface";
-import { UserService, UserServiceBootstrapJob } from "../../services/userService/userService";
-import { IUserService } from "../../services/userService/userService.interface";
 import { WorkspaceService, WorkspaceServiceBootstrapJob } from "../../services/workspaceService/workspaceService";
 import { IWorkspaceService } from "../../services/workspaceService/workspaceService.interface";
 import { AbstractContainerHelper } from "../../base/type";

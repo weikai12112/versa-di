@@ -3,7 +3,7 @@ import { AbstractJob } from "../../base/job";
 import { IUserService, type UserInfo } from "../userService/userService.interface";
 import { IWorkspaceService, type WorkspaceInfo } from "./workspaceService.interface";
 
-const fetchWorkspaceInfo = async (userId: number) => {
+const fetchWorkspaceInfo = async (_: number) => {
     return new Promise<WorkspaceInfo>((resolve) => {
         setTimeout(() => {
             resolve({
